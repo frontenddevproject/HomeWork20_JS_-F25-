@@ -25,3 +25,24 @@ const data = [
 		"email": "mauris.magna@yahoo.ca"
 	}
 ];
+
+const usersDataSection = document.getElementById("data");
+
+function renderUsers (users) {
+  usersDataSection.innerHTML = "";
+
+  users.forEach(({name, phone, email}) => usersDataSection.innerHTML += `<div class="user-card">
+    <p>${name}</p>
+    <span>phone: ${phone}</span>
+    <span>email: ${email}</span>    
+  </div>`);
+}
+
+const promise = new Promise((resolve, reject) => {
+  resolve(data)
+}).then((obj) => {
+  setTimeout(() => {
+    renderUsers(obj);
+  }, 5000)
+});
+
